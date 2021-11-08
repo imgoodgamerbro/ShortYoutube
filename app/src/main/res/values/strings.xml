@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Short Youtube</string>
+
+    <!--    &lt;!&ndash; Urls to fetch information &ndash;&gt;-->
+    <!--    <string name="YOUTUBE_DATA_API">https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=channel&key=AIzaSyAGM5XCNHnfKaXdNUF__CKopLcKJrWyFdY</string>-->
+    <!--    <string name="YOUTUBE_CREATORS_DETAILS">https://www.googleapis.com/youtube/v3/channels?part=contentDetails%2Cstatistics&id=UC7eHZXheF8nVOfwB2PEslMw&key=AIzaSyAGM5XCNHnfKaXdNUF__CKopLcKJrWyFdY</string>-->
+    <!--    <string name="YOUTUBE_VIDEO_OPEN">https://www.youtube.com/watch?v=</string>-->
+
+
+</resources>
