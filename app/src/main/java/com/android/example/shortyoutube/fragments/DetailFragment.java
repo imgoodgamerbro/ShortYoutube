@@ -36,7 +36,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     private String mChannelId, mChannelImage, mChannelTitle, mChannelDes;
 
     private static final String CHANNEL_DETAILS_REQUEST_URL = "https://www.googleapis.com/youtube/v3/channels?part=contentDetails%2Cstatistics&id=";
-    private static final String KEY = "&key=AIzaSyDQsCcN3gT2ROts4di-FQMI6-XHUbKI4Q0";
+    private static final String KEY = "&key=";
     private static final int CHANNEL_DETAILS_LOADER_ID = 1;
 
     public DetailFragment(Bundle bundle){

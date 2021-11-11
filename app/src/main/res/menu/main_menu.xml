@@ -8,6 +8,6 @@
         android:id="@+id/search_bar"
         android:title="Search"
         app:showAsAction="always"
-        android:icon="@drawable/ic_action_action_search"
+        android:icon="@drawable/ic_baseline_search_24"
         />
 </menu>

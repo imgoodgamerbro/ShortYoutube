@@ -37,7 +37,7 @@ public class VideoFragment extends Fragment implements
 
     private Bundle mBundle;
     private static final String VIDEOS_URL_1 = "https://www.googleapis.com/youtube/v3/search?channelId=";
-    private static final String VIDEOS_URL_2 = "&part=snippet&maxResults=50&order=date&type=video&key=AIzaSyDQsCcN3gT2ROts4di-FQMI6-XHUbKI4Q0";
+    private static final String VIDEOS_URL_2 = "&part=snippet&maxResults=25&order=date&type=video&key=";
     private static final int VIDEOS_LOADER_ID = 1;
 
     private FragmentVideoBinding mBinding;

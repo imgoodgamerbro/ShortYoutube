@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1B1B1B"
+        android:padding="5dp">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="372dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/circularImageView_1"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_centerVertical="true"
+                android:background="#2B2A2A"
+                android:scaleType="centerInside"
+                app:civ_border_color="#FFFFFF"
+                app:civ_border_width="4dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="@color/black"
+                app:civ_shadow_radius="10dp" />
+
+            <RelativeLayout
+                android:id="@+id/sub_rl_1"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/circularImageView_1"
+                android:padding="2dp">
+
+                <TextView
+                    android:id="@+id/tv_channel_title_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#2C2929"
+                    android:text="BB ki Vines"
+                    android:textColor="#2C2929"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_channel_desc_1"
+                    android:layout_width="215dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_channel_title_1"
+                    android:layout_marginTop="8dp"
+                    android:background="#2C2929"
+                    android:ellipsize="end"
+                    android:maxLines="4"
+                    android:text="This channel shows the adult comedy videos and all the characters shown in the
+                    video played by bhuvan bam 1 person to many characters"
+                    android:textColor="#2C2929" />
+
+                <TextView
+                    android:id="@+id/tv_publish_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_channel_desc_1"
+                    android:layout_marginTop="10dp"
+                    android:background="#2C2929"
+                    android:text="2010-03-15"
+                    android:textColor="#2C2929" />
+
+                <TextView
+                    android:id="@+id/tv_time_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_channel_desc_1"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:background="#2C2929"
+                    android:text="19:51:57"
+                    android:textColor="#2C2929" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_toRightOf="@id/rl_1">
+
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/circularImageView_2"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="#2B2A2A"
+                android:scaleType="centerInside"
+                app:civ_border_color="#FFFFFF"
+                app:civ_border_width="4dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="@color/black"
+                android:layout_centerVertical="true"
+                app:civ_shadow_radius="10dp" />
+
+            <RelativeLayout
+                android:id="@+id/sub_rl_2"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/circularImageView_2"
+                android:padding="2dp">
+
+                <TextView
+                    android:id="@+id/tv_channel_title_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#2C2929"
+                    android:text="BB ki Vines"
+                    android:textColor="#2C2929"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_channel_desc_2"
+                    android:layout_width="225dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_channel_title_2"
+                    android:layout_marginTop="8dp"
+                    android:background="#2C2929"
+                    android:ellipsize="end"
+                    android:maxLines="4"
+                    android:text="This channel shows the adult comedy videos and all the characters shown in the
+                    video played by bhuvan bam 1 person to many characters"
+                    android:textColor="#2C2929" />
+
+                <TextView
+                    android:id="@+id/tv_publish_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_channel_desc_2"
+                    android:layout_marginTop="10dp"
+                    android:background="#2C2929"
+                    android:text="2010-03-15"
+                    android:textColor="#2C2929" />
+
+                <TextView
+                    android:id="@+id/tv_time_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_channel_desc_2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:background="#2C2929"
+                    android:text="19:51:57"
+                    android:textColor="#2C2929" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

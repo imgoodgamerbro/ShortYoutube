@@ -2,7 +2,7 @@ package com.android.example.shortyoutube.UtilsAndBackground;
 
 import android.text.TextUtils;
 
-import com.android.example.shortyoutube.classes.ChannelCollection;
+import com.android.example.shortyoutube.classes.Channel;
 import com.android.example.shortyoutube.classes.ChannelDetailsCollection;
 import com.android.example.shortyoutube.classes.ChannelVideosCollection;
 
@@ -10,16 +10,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JsonParsing {
 
-    public static ChannelCollection parseJsonData(String json) {
-        ChannelCollection channelCollection;
+    public static List<Channel> parseJsonData(String json) {
         if (TextUtils.isEmpty(json)) {
             return null;
         }
+
+        List<Channel> channels = new ArrayList<>();
         try {
             JSONObject baseJsonResponse = new JSONObject(json);
-            channelCollection = new ChannelCollection();
             JSONArray channelJsonArray = baseJsonResponse.getJSONArray("items");
 
             for (int i = 0; i < channelJsonArray.length(); i++) {
@@ -37,17 +40,18 @@ public class JsonParsing {
                 String thumbnail = defaults.optString("url");
 
                 String title = snippet.getString("channelTitle");
-                String publish = snippet.getString("publishTime");
+                String publishTime = snippet.getString("publishTime");
 
-                channelCollection.addChannel(new ChannelCollection.Channel(
-                        id, desc, thumbnail, title, publish));
+                Channel channel = new Channel(id, desc, thumbnail, title, publishTime);
+                channels.add(channel);
             }
-            return channelCollection;
 
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
         }
+
+        return channels;
     }
 
     public static ChannelDetailsCollection parseJsonChannelData(String json, String imageUrl, String title, String des) {
