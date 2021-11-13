@@ -35,5 +35,4 @@ public class Channel {
     public String getChannelPublishTime() {
         return channelPublishTime;
     }
-
 }

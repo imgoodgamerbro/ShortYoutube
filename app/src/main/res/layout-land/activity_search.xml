@@ -16,11 +16,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
+            android:background="@color/backgroundColor"
             android:orientation="vertical">
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -82,8 +82,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/no_network_image"
-                    android:text="No Internet Connection"
-                    android:textColor="#838383"
+                    android:text="@string/no_connection"
+                    android:textColor="@color/textColor"
                     android:textSize="18sp"/>
 
                 <Button
@@ -93,12 +93,24 @@
                     android:layout_below="@id/tv_no_network"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="Try Again"
-                    android:textColor="#090909"
-                    android:backgroundTint="#05F3F1"/>
+                    android:text="@string/try_again"
+                    android:textColor="@color/textColor"
+                    android:backgroundTint="@color/colorAccent"/>
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/search_no_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_search_results"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/subTextColor"
+                android:visibility="gone"
+                android:layout_centerInParent="true"/>
 
         </RelativeLayout>
 
     </RelativeLayout>
+
 </layout>

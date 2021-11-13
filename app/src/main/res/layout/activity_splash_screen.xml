@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".SplashScreenActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/tv_short"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40dp"
+            android:paddingBottom="4dp"
+            android:text="@string/short_tv"
+            android:textColor="@color/textColor"
+            android:textSize="55sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/iv_youtube_logo"
+            android:layout_width="250dp"
+            android:layout_height="240dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="-40dp"
+            android:layout_toEndOf="@id/tv_short"
+            android:src="@drawable/youtube_logo" />
+
+    </RelativeLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/pb_splash_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/SpinKitView.ThreeBounce"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:SpinKit_Color="@color/colorAccent"
+        android:layout_marginBottom="50dp"/>
+
+</RelativeLayout>

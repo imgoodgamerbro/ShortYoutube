@@ -1,10 +1,75 @@
 <resources>
     <string name="app_name">Short Youtube</string>
 
-    <!--    &lt;!&ndash; Urls to fetch information &ndash;&gt;-->
-    <!--    <string name="YOUTUBE_DATA_API">https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=channel&key=AIzaSyAGM5XCNHnfKaXdNUF__CKopLcKJrWyFdY</string>-->
-    <!--    <string name="YOUTUBE_CREATORS_DETAILS">https://www.googleapis.com/youtube/v3/channels?part=contentDetails%2Cstatistics&id=UC7eHZXheF8nVOfwB2PEslMw&key=AIzaSyAGM5XCNHnfKaXdNUF__CKopLcKJrWyFdY</string>-->
-    <!--    <string name="YOUTUBE_VIDEO_OPEN">https://www.youtube.com/watch?v=</string>-->
+    <!-- Global Strings used in the project  -->
+    <string name="default_value_int">7</string>
+    <string name="shared_preference_name">pref</string>
+    <string name="shared_preference_night_mode">night_mode</string>
+    <string name="shared_preference_channel_list">channel_list</string>
+    <string name="shared_preference_channel_video_list">channel_video_list</string>
 
+    <!--  Fragments Name  -->
+    <string name="fragment_name_details">Details</string>
+    <string name="fragment_name_videos">Videos</string>
 
+    <!--  Details Fragment Strings  -->
+    <string name="details_url">https://www.googleapis.com/youtube/v3/channels?part=contentDetails%2Cstatistics&amp;id=</string>
+    <string name="details_key">&amp;key=ENTER API KEY</string>
+
+    <!-- Video Fragments String -->
+    <string name="videos_url_1">https://www.googleapis.com/youtube/v3/search?channelId=</string>
+    <string name="videos_url_2">&amp;part=snippet&amp;maxResults=</string>
+    <string name="videos_url_3">&amp;order=date&amp;type=video&amp;key=ENTER API KEY</string>
+    <string name="videos_youtube_url">https://www.youtube.com/watch?v=</string>
+
+    <!--  Main Activity Strings  -->
+    <string name="main_activity_url_1">https://www.googleapis.com/youtube/v3/search?part=snippet&amp;maxResults=</string>
+    <string name="main_activity_url_2">&amp;type=channel&amp;key=ENTER API KEY</string>
+
+    <!--  Search Activity Strings  -->
+    <string name="search_activity_url_1">https://www.googleapis.com/youtube/v3/search?q=</string>
+    <string name="search_activity_url_2">&amp;order=viewCount&amp;part=snippet&amp;maxResults=</string>
+    <string name="search_activity_url_3">&amp;type=channel&amp;key=Enter API KEY</string>
+    <string name="search_activity_toast_message">You can now search</string>
+
+    <!-- Settings Activity Strings  -->
+    <string name="settings_activity_night_mode">Night Mode</string>
+    <string name="settings_activity_light_mode">Light Mode</string>
+    <string name="msg_1">Provide some values</string>
+    <string name="msg_2">Provide some values to channel list</string>
+    <string name="msg_3">Provide some values to channel video list</string>
+
+    <!-- Layout Strings -->
+    <string name="no_connection">No Internet Connection</string>
+    <string name="try_again">Try Again</string>
+    <string name="no_search_results">No search found!\nTry again different results.</string>
+
+    <string name="youtube_channel_list">Youtube Channel List</string>
+    <string name="youtube_channel_video_list">Youtube Channel Video List</string>
+    <string name="hint_for_edit_text">1–55</string>
+    <string name="save">Save</string>
+
+    <string name="short_tv">Short</string>
+    <string name="subscribers">Subscribers</string>
+    <string name="views">Views</string>
+    <string name="vid_cnt">Video Count</string>
+
+        <!--  Dummy Data for layouts  <-->
+        <string name="title">BB ki Vines</string>
+        <string name="channel_des">This channel shows the adult comedy videos and all the characters shown in the video played by bhuvan bam 1 person to many characters</string>
+        <string name="sub_zeros">1000000000</string>
+        <string name="views_zeros">100000000000000</string>
+        <string name="vid_cnt_zeros">784000000000000000000000000000000</string>
+        <string name="date">2017–05–12</string>
+        <string name="time">06:24PM</string>
+
+        <string name="video_title">Bade Dino Baad Aya Hu | Mr. Hola Vs. Fameer Fuddi | BB Ki Vines</string>
+        <string name="video_des">Mr Hola has come to collect his debt Presenting: #BBKiVines #MrHola #FameerFuddi ABOUT: Bhuvan Bam is a comedian, ..</string>
+
+    <string name="no_info_from_user">No information available from the user.</string>
+    <string name="hint_for_search">Enter Your Channel Name</string>
+
+    <!--  Menu Strings  -->
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
 </resources>

@@ -8,13 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!--  These colors used in all layouts -->
-    <color name="rippleEffectColor">#5E5E5E</color>
-    <color name="topHeaderAboveActionBar">#AC010F</color>
-    <color name="actionBarColor">#CD0909</color>
-    <color name="colorAccent">#CDA208</color>
+    <!--  These colors used in all layouts  -->
+    <color name="rippleEffectColor">#5E5E5E</color>   <!-- Used in drawable file (ripple_effect) for selectable background-->
+    <color name="topHeaderAboveActionBar">#5E0008</color>
+    <color name="actionBarColor">#980000</color>
+    <color name="colorAccent">#DFB007</color>
     <color name="actionBarTextColor">#FFFFFF</color>
-    <color name="textColor">#000000</color>
+    <color name="textColor">#F3F3F3</color>
     <color name="subTextColor">#888585</color>
-    <color name="backgroundColor">#FFFFFF</color>
+    <color name="backgroundColor">#272727</color>
 </resources>

@@ -84,7 +84,6 @@ public class ChannelCollectionAdapter extends ArrayAdapter<Channel> {
             actualTime = parts[1];
         }
 
-
         pub.setText(actualDate);
         time.setText(actualTime);
 
@@ -101,6 +100,4 @@ public class ChannelCollectionAdapter extends ArrayAdapter<Channel> {
 
         return listItemView;
     }
-
-
 }

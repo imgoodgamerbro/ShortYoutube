@@ -5,10 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Scanner;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

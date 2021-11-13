@@ -3,8 +3,6 @@ package com.android.example.shortyoutube;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
@@ -12,7 +10,7 @@ import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
 import android.content.Intent;
 import android.content.Loader;
-import android.content.res.Configuration;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -41,8 +39,6 @@ public class SearchActivity extends AppCompatActivity implements
         ChannelCollectionAdapter.ChannelItemClickListener,
         SwipeRefreshLayout.OnRefreshListener {
 
-    private static final String YOUTUBE_REQUEST_URL_1 = "https://www.googleapis.com/youtube/v3/search?q=";
-    private static final String YOUTUBE_REQUEST_URL_2 = "&order=viewCount&part=snippet&maxResults=10&type=channel&key=";
     private static final int CHANNEL_LOADER_ID = 2;
 
     private ActivitySearchBinding mBinding;
@@ -51,9 +47,7 @@ public class SearchActivity extends AppCompatActivity implements
     private Bundle mBundle;
     private EditText mEditText;
 
-    String change = null;
-
-    private ArrayList<Channel> channels = null;
+    String change = null, result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +55,14 @@ public class SearchActivity extends AppCompatActivity implements
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_search);
 
-        channels = new ArrayList<Channel>();
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.shared_preference_name), MODE_PRIVATE);
+        result = sharedPreferences.getString(getString(R.string.shared_preference_channel_list), getString(R.string.default_value_int));
+
+        ArrayList<Channel> channels = new ArrayList<>();
 
         mAdapter = new ChannelCollectionAdapter(this, channels, this);
         mBinding.gvSearchActivity.setAdapter(mAdapter);
+        mBinding.searchNoResult.setVisibility(View.GONE);
 
 
         ImageView leftIcon = findViewById(R.id.back_image);
@@ -109,7 +107,7 @@ public class SearchActivity extends AppCompatActivity implements
 
     public void searchButton(View v) {
         if (AppUtils.isNetworkAvailable(this)) {
-            String query = null;
+            String query;
             Loader<String> loader = getLoaderManager().getLoader(CHANNEL_LOADER_ID);
             if(mEditText != null){
                 query = mEditText.getText().toString().trim();
@@ -143,7 +141,7 @@ public class SearchActivity extends AppCompatActivity implements
             });
         } else {
             mBinding.searchRlNoNetwork.setVisibility(View.GONE);
-            Toast.makeText(this, "You can now search", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.search_activity_toast_message), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -154,22 +152,21 @@ public class SearchActivity extends AppCompatActivity implements
         if (args != null) {
             if (!args.getString("query").isEmpty()) {
                 Log.d("SearchActivity", "Query" + args.getString("query").trim());
-                ACTUAL_URL = YOUTUBE_REQUEST_URL_1 + args.getString("query").trim() + YOUTUBE_REQUEST_URL_2;
+                ACTUAL_URL = getString(R.string.search_activity_url_1) + args.getString("query").trim() + getString(R.string.search_activity_url_2) + result + getString(R.string.search_activity_url_3);
             } else {
-                ACTUAL_URL = YOUTUBE_REQUEST_URL_1 + YOUTUBE_REQUEST_URL_2;
+                ACTUAL_URL = getString(R.string.search_activity_url_1) + getString(R.string.search_activity_url_2) + result + getString(R.string.search_activity_url_3);
             }
         } else {
-            ACTUAL_URL = YOUTUBE_REQUEST_URL_1 + YOUTUBE_REQUEST_URL_2;
+            ACTUAL_URL = getString(R.string.search_activity_url_1) + getString(R.string.search_activity_url_2) + result + getString(R.string.search_activity_url_3);
         }
         return new AsyncTaskLoader<List<Channel>>(this) {
 
             @Override
             public List<Channel> loadInBackground() {
-                String searchResults = null;
+                String searchResults;
                 try {
                     URL channelsUrl = new URL(ACTUAL_URL);
                     searchResults = AppUtils.getResponseFromHttpUrl(channelsUrl);
-                    //Log.d("Searched Url", searchResults);
                     return JsonParsing.parseJsonData(searchResults);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -183,6 +180,7 @@ public class SearchActivity extends AppCompatActivity implements
                 mBinding.gvSearchActivity.setVisibility(View.GONE);
                 mBinding.shimmerSearch.setVisibility(View.VISIBLE);
                 mBinding.shimmerSearch.startShimmer();
+                mBinding.searchNoResult.setVisibility(View.GONE);
                 Log.d("LOADER", "FETCHING NEW DATA");
                 forceLoad();
             }
@@ -199,12 +197,12 @@ public class SearchActivity extends AppCompatActivity implements
 
         mAdapter.clear();
 
-        if (data != null){
+        if (data != null && !data.isEmpty()){
             mAdapter.addAll(data);
             Log.d("URL", ACTUAL_URL);
             Log.d("EditText", mEditText.getText().toString());
         } else {
-            Toast.makeText(SearchActivity.this, "Poor Request", Toast.LENGTH_SHORT).show();
+            mBinding.searchNoResult.setVisibility(View.VISIBLE);
             Log.d("URL", ACTUAL_URL);
             Log.d("EditText", mEditText.toString());
         }
@@ -213,6 +211,13 @@ public class SearchActivity extends AppCompatActivity implements
     @Override
     public void onLoaderReset(Loader<List<Channel>> loader){
     }
+
+    @Override
+    public void onRefresh() {
+        Log.d("SEARCH", "REFRESHING...");
+        getLoaderManager().restartLoader(CHANNEL_LOADER_ID, mBundle, this);
+    }
+
 
     @Override
     public void onChannelClick(int clickedItemIndex, String id, String imageUrl, String title, String des) {
@@ -226,11 +231,6 @@ public class SearchActivity extends AppCompatActivity implements
 
         intent.putExtras(bundle);
         startActivity(intent);
-    }
-
-    @Override
-    public void onRefresh() {
-        Log.d("SEARCH", "REFRESHING...");
-        getLoaderManager().restartLoader(CHANNEL_LOADER_ID, mBundle, this);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

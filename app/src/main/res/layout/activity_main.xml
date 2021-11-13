@@ -6,6 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
         tools:context=".MainActivity">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -23,8 +24,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer"
@@ -70,8 +69,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/no_network_image"
-                android:text="No Internet Connection"
-                android:textColor="@color/white"
+                android:text="@string/no_connection"
+                android:textColor="@color/textColor"
                 android:textSize="18sp"/>
 
             <Button
@@ -81,10 +80,11 @@
                 android:layout_below="@id/tv_no_network"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="Try Again"
-                android:textColor="#090909"
-                android:backgroundTint="#05F3F1"/>
+                android:text="@string/try_again"
+                android:textColor="@color/textColor"
+                android:backgroundTint="@color/colorAccent"/>
         </RelativeLayout>
+
     </RelativeLayout>
 
 </layout>

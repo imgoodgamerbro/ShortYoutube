@@ -4,24 +4,28 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/drawable/ripple_effect.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout-land/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout-land/activity_search.xml" value="0.21164021164021163" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout-land/shimmer_list_item.xml" value="0.264" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/activity_custom.xml" value="0.264" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout-land/shimmer_list_item.xml" value="0.176" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/activity_custom.xml" value="0.1" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/activity_detail.xml" value="0.2246376811594203" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/activity_search.xml" value="0.264" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/activity_settings.xml" value="0.2" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/activity_splash_screen.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/activity_video.xml" value="0.2318840579710145" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/channel_detail.xml" value="0.264" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/channel_list_item.xml" value="0.4" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/channel_video_list_item.xml" value="0.39118825100133514" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/channel_detail_item.xml" value="0.2" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/channel_list_item.xml" value="0.176" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/channel_video_list_item.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/custom_action_bar_for_search.xml" value="0.1" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/detail_channel.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/fragment_detail.xml" value="0.22010869565217392" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/fragment_video.xml" value="0.1" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/shimmer_list_item.xml" value="0.2" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/toolbar.xml" value="0.391304347826087" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/menu/main_menu.xml" value="0.16799999999999998" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/fragment_video.xml" value="0.16" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/shimmer_list_item.xml" value="0.176" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/layout/toolbar.xml" value="0.27647058823529413" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/ShortYoutube/app/src/main/res/menu/main_menu.xml" value="0.264" />
       </map>
     </option>
   </component>

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:background="@color/purple_500">
+    android:background="@color/actionBarColor">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,6 +14,9 @@
             android:id="@+id/back_image"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:src="@drawable/ic_baseline_arrow_back_24" />
 
         <LinearLayout
@@ -26,10 +29,11 @@
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
                 android:background="@null"
                 android:textColor="@color/white"
-                android:hint="Enter Your Channel Name"
+                android:hint="@string/hint_for_search"
+                android:textColorHint="#D3D3D3"
                 android:textSize="18sp"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
@@ -39,8 +43,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginLeft="12dp"
+                android:layout_marginStart="12dp"
                 android:background="#474343"/>
+
         </LinearLayout>
 
         <ImageView
@@ -48,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:onClick="searchButton"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:src="@drawable/ic_baseline_search_24"/>
     </LinearLayout>
 

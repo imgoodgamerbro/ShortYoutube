@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.example.shortyoutube.R;
 import com.android.example.shortyoutube.UtilsAndBackground.AppUtils;
@@ -27,7 +26,8 @@ import com.android.example.shortyoutube.databinding.FragmentDetailBinding;
 import java.io.IOException;
 import java.net.URL;
 
-public class DetailFragment extends Fragment implements LoaderManager.LoaderCallbacks<ChannelDetailsCollection> {
+public class DetailFragment extends Fragment
+        implements LoaderManager.LoaderCallbacks<ChannelDetailsCollection> {
 
     private Bundle mBundle;
     private FragmentDetailBinding mBinding;
@@ -35,12 +35,18 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
 
     private String mChannelId, mChannelImage, mChannelTitle, mChannelDes;
 
-    private static final String CHANNEL_DETAILS_REQUEST_URL = "https://www.googleapis.com/youtube/v3/channels?part=contentDetails%2Cstatistics&id=";
-    private static final String KEY = "&key=";
     private static final int CHANNEL_DETAILS_LOADER_ID = 1;
 
-    public DetailFragment(Bundle bundle){
-        mBundle = bundle;
+    public DetailFragment(){
+        //Do nothing
+    }
+
+    public static DetailFragment newInstance (Bundle bundle){
+        Bundle args = new Bundle();
+        args.putBundle("bundle", bundle);
+        DetailFragment detailFragment = new DetailFragment();
+        detailFragment.setArguments(args);
+        return detailFragment;
     }
 
     @Override
@@ -49,12 +55,16 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
                 inflater, R.layout.fragment_detail, container, false);
         View rootView = mBinding.getRoot();
 
+        mBundle = getArguments().getBundle("bundle");
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mBinding.rvDetailActivity.setLayoutManager(layoutManager);
 
         mBinding.rvDetailActivity.setHasFixedSize(true);
         mAdapter = new ChannelDetailsCollectionAdapter();
         mBinding.rvDetailActivity.setAdapter(mAdapter);
+
+        mBinding.detailNoInfo.setVisibility(View.GONE);
 
         if(mBundle != null){
             mChannelId  = mBundle.getString("id");
@@ -63,12 +73,8 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             mChannelDes  = mBundle.getString("des");
         }
 
-        Loader();
-        return rootView;
-    }
-
-    public void Loader(){
         getLoaderManager().initLoader(CHANNEL_DETAILS_LOADER_ID,null, this);
+        return rootView;
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -91,7 +97,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             public ChannelDetailsCollection loadInBackground() {
                 String searchResults = null;
                 try {
-                    URL channelsUrl = new URL(CHANNEL_DETAILS_REQUEST_URL + mChannelId + KEY);
+                    URL channelsUrl = new URL(getString(R.string.details_url) + mChannelId + getString(R.string.details_key));
                     searchResults = AppUtils.getResponseFromHttpUrl(channelsUrl);
                     Log.d("DetailFragment Url", searchResults);
                     if(mChannelId != null){
@@ -118,7 +124,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         if(data != null){
             mAdapter.appendData(data);
         } else {
-            Toast.makeText(getContext(), "Poor Request", Toast.LENGTH_SHORT).show();
+            mBinding.detailNoInfo.setVisibility(View.VISIBLE);
         }
     }
 

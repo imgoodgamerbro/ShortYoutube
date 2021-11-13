@@ -22,15 +22,13 @@ public class ChannelDetailsCollectionAdapter extends RecyclerView.Adapter<Channe
     private CircularImageView mCiv;
     private TextView mTvSubs, mTvVidCnt, mTvViews;
 
-
     public ChannelDetailsCollectionAdapter(){
-
     }
 
     @NonNull
     @Override
     public ChannelDetailsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflater = LayoutInflater.from(parent.getContext()).inflate(R.layout.channel_detail, parent, false);
+        View inflater = LayoutInflater.from(parent.getContext()).inflate(R.layout.channel_detail_item, parent, false);
         return new ChannelDetailsViewHolder(inflater);
     }
 

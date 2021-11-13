@@ -95,7 +95,6 @@ public class ChannelVideosCollectionAdapter
             itemView.setOnClickListener(this);
         }
 
-
         @SuppressLint("SimpleDateFormat")
         public void setVideoPublish(String videoPublish) throws ParseException {
             String publishedAt = videoPublish;

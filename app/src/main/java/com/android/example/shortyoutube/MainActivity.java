@@ -3,13 +3,9 @@ package com.android.example.shortyoutube;
 import android.annotation.SuppressLint;
 import android.app.LoaderManager;
 import android.content.AsyncTaskLoader;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
-import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,8 +15,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.databinding.DataBindingUtil;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -40,38 +36,50 @@ public class MainActivity extends AppCompatActivity implements
         ChannelCollectionAdapter.ChannelItemClickListener,
         SwipeRefreshLayout.OnRefreshListener {
 
-    private static final String YOUTUBE_REQUEST_URL = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&type=channel&key=";
+    //Api - https://www.googleapis.com/youtube/v3/search?q=bb&part=snippet&maxResults=5&type=channel&key=Enter Api key
+
     private static final int CHANNEL_LOADER_ID = 1;
 
     private ActivityMainBinding mBinding;
     private ChannelCollectionAdapter mAdapter;
 
-    private ArrayList<Channel> channels = null;
+    SharedPreferences mSharedPreferences;
+    private String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mSharedPreferences = getSharedPreferences(getString(R.string.shared_preference_name), MODE_PRIVATE);
+        boolean aBoolean = mSharedPreferences.getBoolean(getString(R.string.shared_preference_night_mode), false);
+        if(!aBoolean){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        channels = new ArrayList<Channel>();
+        mSharedPreferences = getSharedPreferences(getString(R.string.shared_preference_name), MODE_PRIVATE);
+        aBoolean = mSharedPreferences.getBoolean(getString(R.string.shared_preference_night_mode), false);
+        if(aBoolean){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
 
+        ArrayList<Channel> channels = new ArrayList<>();
         mAdapter = new ChannelCollectionAdapter(this, channels, this);
         mBinding.gvMainActivity.setAdapter(mAdapter);
 
-
-        initialiseBuilder();
+        initialiseLoader();
 
         mBinding.swipeRefresh.setOnRefreshListener(this);
     }
 
-    private void initialiseBuilder(){
+    private void initialiseLoader(){
         if (!AppUtils.isNetworkAvailable(this)) {
              mBinding.gvMainActivity.setVisibility(View.GONE);
              mBinding.rlNoNetwork.setVisibility(View.VISIBLE);
              mBinding.bNoNetwork.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
-                     initialiseBuilder();
+                     initialiseLoader();
                  }
              });
         } else {
@@ -86,9 +94,14 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    private String YOUTUBE_REQUEST_URL = "";
     @SuppressLint("StaticFieldLeak")
     @Override
     public Loader<List<Channel>> onCreateLoader(int id, Bundle args) {
+        mSharedPreferences = getSharedPreferences(getString(R.string.shared_preference_name), MODE_PRIVATE);
+        result = mSharedPreferences.getString(getString(R.string.shared_preference_channel_list), getString(R.string.default_value_int));
+        YOUTUBE_REQUEST_URL = getString(R.string.main_activity_url_1)+ result + getString(R.string.main_activity_url_2);
+        Log.d("MainActivityResult", "" + result);
 
         return new AsyncTaskLoader<List<Channel>>(this) {
 
@@ -105,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements
 
             @Override
             public List<Channel> loadInBackground() {
-                String searchResults = null;
+                String searchResults;
                 try {
                     URL channelsUrl = new URL(YOUTUBE_REQUEST_URL);
                     searchResults = AppUtils.getResponseFromHttpUrl(channelsUrl);
@@ -128,10 +141,10 @@ public class MainActivity extends AppCompatActivity implements
 
         mAdapter.clear();
 
-        if (data != null) {
+        if (data != null && !data.isEmpty()) {
             mAdapter.addAll(data);
         } else {
-            Toast.makeText(MainActivity.this, "Poor Request", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Try Again later", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -141,24 +154,22 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onChannelClick(int clickedItemIndex, String id, String imageUrl, String title, String des) {
-        Intent intent = new Intent(MainActivity.this, CustomActivity.class);
-
-        Bundle bundle = new Bundle();
-        bundle.putString("id", id);
-        bundle.putString("thumbnail", imageUrl);
-        bundle.putString("title", title);
-        bundle.putString("des", des);
-
-        intent.putExtras(bundle);
-        startActivity(intent);
+    protected void onRestart() {
+        super.onRestart();
+        if (AppUtils.isNetworkAvailable(this)) {
+            getLoaderManager().restartLoader(CHANNEL_LOADER_ID, null, this);
+        } else {
+            initialiseLoader();
+        }
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        if (!AppUtils.isNetworkAvailable(this)) {
-            initialiseBuilder();
+    public void onRefresh() {
+        Log.d("MAIN", "REFRESHING...");
+        if (AppUtils.isNetworkAvailable(this)) {
+            getLoaderManager().restartLoader(CHANNEL_LOADER_ID, null, this);
+        } else {
+            initialiseLoader();
         }
     }
 
@@ -174,18 +185,27 @@ public class MainActivity extends AppCompatActivity implements
         if (item.getItemId() == R.id.search_bar) {
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
             startActivity(intent);
+        } else{
+            if(item.getItemId() == R.id.settings){
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
         }
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
-    public void onRefresh() {
-        Log.d("MAIN", "REFRESHING...");
-        if (AppUtils.isNetworkAvailable(this)) {
-            getLoaderManager().restartLoader(CHANNEL_LOADER_ID, null, this);
-        } else {
-            initialiseBuilder();
-        }
+    public void onChannelClick(int clickedItemIndex, String id, String imageUrl, String title, String des) {
+        Intent intent = new Intent(MainActivity.this, CustomActivity.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        bundle.putString("thumbnail", imageUrl);
+        bundle.putString("title", title);
+        bundle.putString("des", des);
+
+        intent.putExtras(bundle);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

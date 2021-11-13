@@ -1,5 +1,6 @@
 package com.android.example.shortyoutube.adapters;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,16 +9,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.android.example.shortyoutube.R;
 import com.android.example.shortyoutube.fragments.DetailFragment;
 import com.android.example.shortyoutube.fragments.VideoFragment;
 
 public class CustomAdapter extends FragmentPagerAdapter {
 
     private Bundle mDetailBundle, mVideoBundle;
+    private Context mContext;
 
-    //private Context mContext;
-    public CustomAdapter(FragmentManager fm, Bundle bundle1, Bundle bundle2) {
+    public CustomAdapter(Context context, FragmentManager fm, Bundle bundle1, Bundle bundle2) {
         super(fm);
+        mContext = context;
         mDetailBundle = bundle1;
         mVideoBundle = bundle2;
     }
@@ -26,10 +29,10 @@ public class CustomAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if(position == 0){
-            return new DetailFragment(mDetailBundle);
+            return DetailFragment.newInstance(mDetailBundle);
         }
         else {
-            return new VideoFragment(mVideoBundle);
+            return VideoFragment.newInstance(mVideoBundle);
         }
     }
 
@@ -42,10 +45,10 @@ public class CustomAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if(position == 0){
-            return "Details";
+            return mContext.getString(R.string.fragment_name_details);
         }
         else{
-            return "Videos";
+            return mContext.getString(R.string.fragment_name_videos);
         }
     }
 }
