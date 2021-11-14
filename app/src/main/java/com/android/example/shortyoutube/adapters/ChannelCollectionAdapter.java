@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,7 +48,7 @@ public class ChannelCollectionAdapter extends ArrayAdapter<Channel> {
         }
 
         Channel currentChannel = getItem(position);
-        ConstraintLayout constraintLayout = (ConstraintLayout) listItemView.findViewById(R.id.cl_1);
+        RelativeLayout relativeLayout = (RelativeLayout) listItemView.findViewById(R.id.list_rl_1);
         CircularImageView circularImageView = (CircularImageView) listItemView.findViewById(R.id.circularImageView);
         TextView title = (TextView) listItemView.findViewById(R.id.tv_channel_title);
         TextView des = (TextView) listItemView.findViewById(R.id.tv_channel_desc);
@@ -87,7 +88,7 @@ public class ChannelCollectionAdapter extends ArrayAdapter<Channel> {
         pub.setText(actualDate);
         time.setText(actualTime);
 
-        constraintLayout.setOnClickListener(new View.OnClickListener() {
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mChannelItemClickListener.onChannelClick(position,

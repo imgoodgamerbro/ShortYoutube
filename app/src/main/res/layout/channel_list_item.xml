@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/cl_1"
+        android:id="@+id/list_rl_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ripple_effect">
@@ -19,43 +19,39 @@
             app:civ_shadow="true"
             app:civ_shadow_color="@color/textColor"
             app:civ_shadow_radius="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
             tools:src="@drawable/no_image" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_2"
-            android:layout_width="250dp"
+        <RelativeLayout
+            android:id="@+id/list_rl_2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/circularImageView"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toEndOf="@id/circularImageView">
 
             <TextView
                 android:id="@+id/tv_channel_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/textColor"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="@id/cl_2"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/title" />
 
             <TextView
                 android:id="@+id/tv_channel_desc"
-                android:layout_width="225dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ellipsize="end"
                 android:maxLines="4"
                 android:textColor="@color/textColor"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_channel_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_channel_title"
-                tools:text="@string/channel_des" />
+                tools:text="@string/channel_des"
+                android:layout_below="@id/tv_channel_title"/>
 
             <TextView
                 android:id="@+id/tv_publish"
@@ -63,9 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/subTextColor"
-                app:layout_constraintStart_toStartOf="@+id/tv_channel_desc"
-                app:layout_constraintTop_toBottomOf="@+id/tv_channel_desc"
-                tools:text="@string/date" />
+                tools:text="@string/date"
+                android:layout_below="@id/tv_channel_desc"/>
 
             <TextView
                 android:id="@+id/tv_time"
@@ -73,12 +68,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/subTextColor"
-                app:layout_constraintEnd_toEndOf="@+id/tv_channel_desc"
-                app:layout_constraintTop_toBottomOf="@+id/tv_channel_desc"
+                android:layout_below="@id/tv_channel_desc"
+                android:layout_alignParentEnd="true"
                 tools:text="@string/time" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 </layout>
