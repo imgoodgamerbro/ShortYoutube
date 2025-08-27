@@ -14,7 +14,7 @@
 
     <!--  Details Fragment Strings  -->
     <string name="details_url">https://www.googleapis.com/youtube/v3/channels?part=contentDetails%2Cstatistics&amp;id=</string>
-    <string name="details_key">&amp;key=ENTER API KEY</string>
+    <string name="details_key">&amp;key=AIzaSyCiDG3djZm4Sbkgi8G9RIt3MOort2pnCSo</string>
 
     <!-- Video Fragments String -->
     <string name="videos_url_1">https://www.googleapis.com/youtube/v3/search?channelId=</string>
