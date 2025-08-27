@@ -19,17 +19,17 @@
     <!-- Video Fragments String -->
     <string name="videos_url_1">https://www.googleapis.com/youtube/v3/search?channelId=</string>
     <string name="videos_url_2">&amp;part=snippet&amp;maxResults=</string>
-    <string name="videos_url_3">&amp;order=date&amp;type=video&amp;key=ENTER API KEY</string>
+    <string name="videos_url_3">&amp;order=date&amp;type=video&amp;key=AIzaSyCiDG3djZm4Sbkgi8G9RIt3MOort2pnCSo</string>
     <string name="videos_youtube_url">https://www.youtube.com/watch?v=</string>
 
     <!--  Main Activity Strings  -->
     <string name="main_activity_url_1">https://www.googleapis.com/youtube/v3/search?part=snippet&amp;maxResults=</string>
-    <string name="main_activity_url_2">&amp;type=channel&amp;key=ENTER API KEY</string>
+    <string name="main_activity_url_2">&amp;type=channel&amp;key=AIzaSyCiDG3djZm4Sbkgi8G9RIt3MOort2pnCSo</string>
 
     <!--  Search Activity Strings  -->
     <string name="search_activity_url_1">https://www.googleapis.com/youtube/v3/search?q=</string>
     <string name="search_activity_url_2">&amp;order=viewCount&amp;part=snippet&amp;maxResults=</string>
-    <string name="search_activity_url_3">&amp;type=channel&amp;key=Enter API KEY</string>
+    <string name="search_activity_url_3">&amp;type=channel&amp;key=AIzaSyCiDG3djZm4Sbkgi8G9RIt3MOort2pnCSo</string>
     <string name="search_activity_toast_message">You can now search</string>
 
     <!-- Settings Activity Strings  -->
