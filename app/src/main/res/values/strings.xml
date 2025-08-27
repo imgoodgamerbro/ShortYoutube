@@ -14,22 +14,22 @@
 
     <!--  Details Fragment Strings  -->
     <string name="details_url">https://www.googleapis.com/youtube/v3/channels?part=contentDetails%2Cstatistics&amp;id=</string>
-    <string name="details_key">&amp;key=AIzaSyBoz5-GI-JKgBnyVZYmHtey5E9NJFM_D8g</string>
+    <string name="details_key">&amp;key=AIzaSyBK_qDVPXJPw3lYiV72hms9WewMz4A0j5s</string>
 
     <!-- Video Fragments String -->
     <string name="videos_url_1">https://www.googleapis.com/youtube/v3/search?channelId=</string>
     <string name="videos_url_2">&amp;part=snippet&amp;maxResults=</string>
-    <string name="videos_url_3">&amp;order=date&amp;type=video&amp;key=AIzaSyBoz5-GI-JKgBnyVZYmHtey5E9NJFM_D8g</string>
+    <string name="videos_url_3">&amp;order=date&amp;type=video&amp;key=AIzaSyBK_qDVPXJPw3lYiV72hms9WewMz4A0j5s</string>
     <string name="videos_youtube_url">https://www.youtube.com/watch?v=</string>
 
     <!--  Main Activity Strings  -->
     <string name="main_activity_url_1">https://www.googleapis.com/youtube/v3/search?part=snippet&amp;maxResults=</string>
-    <string name="main_activity_url_2">&amp;type=channel&amp;key=AIzaSyBoz5-GI-JKgBnyVZYmHtey5E9NJFM_D8g</string>
+    <string name="main_activity_url_2">&amp;type=channel&amp;key=AIzaSyBK_qDVPXJPw3lYiV72hms9WewMz4A0j5s</string>
 
     <!--  Search Activity Strings  -->
     <string name="search_activity_url_1">https://www.googleapis.com/youtube/v3/search?q=</string>
     <string name="search_activity_url_2">&amp;order=viewCount&amp;part=snippet&amp;maxResults=</string>
-    <string name="search_activity_url_3">&amp;type=channel&amp;key=AIzaSyBoz5-GI-JKgBnyVZYmHtey5E9NJFM_D8g</string>
+    <string name="search_activity_url_3">&amp;type=channel&amp;key=AIzaSyBK_qDVPXJPw3lYiV72hms9WewMz4A0j5s</string>
     <string name="search_activity_toast_message">You can now search</string>
 
     <!-- Settings Activity Strings  -->
